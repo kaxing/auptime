@@ -1,0 +1,39 @@
+AUPTIME(1)                 General Commands Manual                 AUPTIME(1)
+
+NAME
+       auptime - actual uptime
+
+SYNOPSIS
+       ./auptime
+
+DESCRIPTION
+       auptime (actual uptime) displays the time since boot that Linux has
+       spent awake, in days, hours, minutes and seconds. Time spent in
+       suspend is excluded. Normal idle time still counts; looking busy
+       is not required.
+
+       Standard Linux uptime includes suspend. auptime does not give
+       your laptop credit for sleeping through the weekend.
+
+BUILD
+       Requires Linux, a C compiler and make.
+
+       make
+
+EXAMPLE
+       $ ./auptime
+       up 2d 03:04:05
+
+NOTES
+       The time is read from clock_gettime(CLOCK_MONOTONIC). No daemon,
+       saved state or root privileges are required.
+
+       CLOCK_MONOTONIC excludes suspend; CLOCK_BOOTTIME includes it.
+       Manual wall-clock changes do not affect the reported time.
+       Gradual clock frequency adjustments can affect its rate.
+
+CLEAN
+       make clean
+
+SEE ALSO
+       uptime(1), clock_gettime(2)
